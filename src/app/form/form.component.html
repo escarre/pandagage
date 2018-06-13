@@ -1,0 +1,31 @@
+<novo-form [form]="textForm"
+           #form>
+  <div class="novo-form-row">
+    <novo-control [form]="textForm"
+                  [control]="textControl"></novo-control>
+  </div>
+  <div class="novo-form-row">
+    <novo-control [form]="textForm"
+                  [control]="compControl"></novo-control>
+  </div>
+  <div class="novo-form-row">
+    <novo-control [form]="textForm"
+                  [control]="dateControl"></novo-control>
+  </div>
+  <div class="novo-form-row">
+    <novo-control [form]="textForm"
+                  [control]="tilesControl"></novo-control>
+  </div>
+  <div class="novo-form-row">
+    <novo-control [form]="textForm"
+                  [control]="phoneControl"></novo-control>
+  </div>
+  <div class="novo-form-row">
+    <novo-control [form]="textForm"
+                  [control]="textAreaControl"></novo-control>
+  </div>
+</novo-form>
+<footer class="form-footer">
+  <button theme="primary"
+          icon="check">Save</button>
+</footer>

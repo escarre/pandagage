@@ -1,2 +1,15 @@
-<h1>Sample Extension</h1>
-<p>Hello!!</p>
+<h4>How likely are you to win this job?</h4>
+<section>
+  <div #chartTarget
+       class="chart"
+       align="center">
+    Loading probability...
+  </div>
+  <section class="icons">
+    <div *ngIf="isUp">
+      <i class="bhi-trending-up"></i>This job is trending up! Keep it up!</div>
+    <div *ngIf="isDown">
+      <i class="bhi-trending-down"></i>This job is trending down. Act fast!</div>
+  </section>
+</section>
+<div class="footer">We are {{confidence}}% confident in this rating.</div>
