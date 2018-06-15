@@ -1,5 +1,47 @@
 :host {
   height: 300px;
+  .cats {
+    display: flex;
+  }
+  .delta,
+  .confidence {
+    flex: 1;
+    padding: 0 15px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    label {
+      display: block;
+      color: #aaa;
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
+  }
+  .quarter,
+  .three-quarter {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .quarter {
+    flex: 30%;
+    font-size: 1.3em;
+  }
+  .three-quarter {
+    flex: 70%;
+  }
+  .divider {
+    width: 1px;
+    margin: 10px 0;
+    background-color: #eee;
+  }
+  i.bhi-activity {
+    font-size: 1.3em;
+    padding: 0 10px;
+  }
   i.bhi-trending-up {
     color: #8cc152;
     padding: 0 10px;
@@ -15,20 +57,23 @@
     font-size: 20px;
   }
   .icons {
-    text-align: center;
-    font-size: 20px;
+    font-size: 23px;
+    // margin-bottom: -10px;
   }
-  .footer {
-    font-size: 16px;
-    text-align: center;
-    color: #c3c3c3;
-    display: flex;
-    justify-content: flex-end;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    padding: 10px 15px;
-    z-index: 100;
+  .up {
+    color: #8cc152;
+  }
+  .down {
+    color: #da4453;
+  }
+  .up,
+  .down {
+    i {
+      font-size: 0.9em;
+    }
+  }
+  .make-it-up {
+    transform: scale(1, -1);
+    padding: 5px;
   }
 }

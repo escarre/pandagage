@@ -79,7 +79,9 @@ export class SampleComponent implements OnInit, AfterViewInit {
   confidence = 87;
   chart: Highcharts.ChartObject;
   isUp: boolean;
+  delta: number;
   isDown: boolean;
+  isNeutral: boolean;
 
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {}
 
@@ -94,6 +96,10 @@ export class SampleComponent implements OnInit, AfterViewInit {
     this.probabilitySubscription.subscribe((response: any) => {
       this.probability = Math.round(response.probability * 100);
       this.confidence = Math.round(response.confidence);
+      this.delta = response.delta * 100;
+      this.isUp = response.isUp;
+      this.isDown = response.isDown;
+      this.isNeutral = response.isNeutral;
       const options: any = HighCharts.merge(gaugeOptions, {
         yAxis: {
           min: 0,
