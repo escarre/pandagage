@@ -12,9 +12,14 @@
       <label>Confidence</label> {{confidence}}%</div>
     <div class="delta">
       <label>Trend</label>
-
-
-
+      <section *ngIf="delta < 0"
+               class="down">
+        <i class="bhi-collapse"></i>{{ delta }}
+      </section>
+      <section *ngIf="delta > 0"
+               class="up">
+        <i class="make-it-up bhi-collapse"></i>{{ delta }}
+      </section>
       <section class="neutral"
                *ngIf="isNeutral">No Change
       </section>

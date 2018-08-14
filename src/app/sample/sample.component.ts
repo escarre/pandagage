@@ -89,41 +89,47 @@ export class SampleComponent implements OnInit, AfterViewInit {
     const url = 'https://panda-ml-demo.herokuapp.com/placement/';
     this.activatedRoute.queryParams.subscribe((params: any) => {
       this.entityId = params.EntityID;
-      this.probabilitySubscription = this.http.get(url + this.entityId);
+      this.probability = Math.round(params.probability * 100);
+      this.confidence = Math.round(params.confidence);
+      this.delta = params.delta * 1;
+      this.isUp = params.isUp === 'true';
+      this.isDown = params.isDown === 'true';
+      this.isNeutral = params.isNeutral === 'true';
+      // this.probabilitySubscription = this.http.get(url + this.entityId);
     });
   }
   ngAfterViewInit() {
-    this.probabilitySubscription.subscribe((response: any) => {
-      this.probability = Math.round(response.probability * 100);
-      this.confidence = Math.round(response.confidence);
-      this.delta = response.delta * 100;
-      this.isUp = response.isUp;
-      this.isDown = response.isDown;
-      this.isNeutral = response.isNeutral;
-      const options: any = HighCharts.merge(gaugeOptions, {
-        yAxis: {
-          min: 0,
-          max: 100,
-        },
+    // this.probabilitySubscription.subscribe((response: any) => {
+    // this.probability = Math.round(response.probability * 100);
+    // this.confidence = Math.round(response.confidence);
+    // this.delta = response.delta * 100;
+    // this.isUp = response.isUp;
+    // this.isDown = response.isDown;
+    // this.isNeutral = response.isNeutral;
+    const options: any = HighCharts.merge(gaugeOptions, {
+      yAxis: {
+        min: 0,
+        max: 100,
+      },
 
-        credits: {
-          enabled: false,
-        },
+      credits: {
+        enabled: false,
+      },
 
-        series: [
-          {
-            name: 'Rating',
-            data: [this.probability],
-            dataLabels: {
-              format: '<div style="text-align:center"><span style="font-size:25px;color: black' + '">{y}%</span><br/>' + '</div>',
-            },
-            tooltip: {
-              valueSuffix: ' km/h',
-            },
+      series: [
+        {
+          name: 'Rating',
+          data: [this.probability],
+          dataLabels: {
+            format: '<div style="text-align:center"><span style="font-size:25px;color: black' + '">{y}%</span><br/>' + '</div>',
           },
-        ],
-      });
-      this.chart = Highcharts.chart(this.chartTarget.nativeElement, options);
+          tooltip: {
+            valueSuffix: ' km/h',
+          },
+        },
+      ],
     });
+    this.chart = Highcharts.chart(this.chartTarget.nativeElement, options);
+    // });
   }
 }
